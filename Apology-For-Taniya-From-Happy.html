@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Pull Request for Taniya - Sincere Apology from Happy</title>
+  <meta name="description" content="A developer-crafted interactive apology pull request for Taniya from Happy in a peach and pink theme." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #12070f;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(251, 146, 60, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
+      color: #fce7f3;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    code, pre, .font-mono {
+      font-family: 'Fira Code', monospace;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 28px 20px 90px;
+    }
+    .glass-card {
+      background: rgba(30, 13, 25, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(244, 114, 182, 0.22);
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(244, 63, 94, 0.05);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .badge-open {
+      background: rgba(251, 146, 60, 0.18);
+      color: #fed7aa;
+      border: 1px solid rgba(251, 146, 60, 0.35);
+    }
+    .badge-merged {
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(244, 63, 94, 0.25));
+      color: #fed7aa;
+      border: 1px solid rgba(244, 114, 182, 0.5);
+    }
+    .branch-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      color: #fbcfe8;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+    .btn-peach {
+      background: linear-gradient(135deg, #fb923c 0%, #f43f5e 55%, #ec4899 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 18px rgba(244, 63, 94, 0.4);
+    }
+    .btn-peach:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5);
+    }
+    .btn-peach:active {
+      transform: translateY(0);
+    }
+    .btn-outline {
+      background: rgba(40, 19, 33, 0.85);
+      color: #fbcfe8;
+      border: 1px solid rgba(244, 114, 182, 0.3);
+    }
+    .btn-outline:hover {
+      background: rgba(58, 25, 47, 0.9);
+      border-color: rgba(244, 114, 182, 0.5);
+      color: #ffffff;
+    }
+    .diff-line {
+      display: flex;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      padding: 5px 14px;
+      border-left: 3px solid transparent;
+      line-height: 1.5;
+    }
+    .diff-del {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border-left-color: #f43f5e;
+    }
+    .diff-add {
+      background: rgba(251, 146, 60, 0.15);
+      color: #fed7aa;
+      border-left-color: #fb923c;
+    }
+    .diff-ctx {
+      color: #9d7b92;
+    }
+    .voucher-card {
+      background: rgba(26, 11, 21, 0.75);
+      border: 1px solid rgba(244, 114, 182, 0.2);
+      border-radius: 16px;
+      padding: 18px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .voucher-card:hover {
+      border-color: rgba(251, 146, 60, 0.5);
+      transform: translateY(-3px);
+      background: rgba(36, 15, 29, 0.9);
+      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.15);
+    }
+    .voucher-card.redeemed {
+      border-color: rgba(251, 146, 60, 0.6);
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(244, 63, 94, 0.15));
+      box-shadow: 0 8px 25px rgba(251, 146, 60, 0.2);
+    }
+    .terminal-window {
+      background: #0f050d;
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+    }
+    .terminal-header {
+      background: #1d0b19;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(244, 114, 182, 0.18);
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #fb7185; }
+    .dot-yellow { background: #fbbf24; }
+    .dot-green { background: #34d399; }
+    .terminal-body {
+      padding: 18px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      max-height: 290px;
+      overflow-y: auto;
+      color: #fbcfe8;
+    }
+    .confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 4, 9, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cert-box {
+      border: 2px dashed rgba(244, 114, 182, 0.45);
+      background: radial-gradient(circle at top right, rgba(251, 146, 60, 0.18), rgba(24, 10, 20, 0.98));
+      border-radius: 24px;
+      padding: 36px 30px;
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(244, 63, 94, 0.2);
+      animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    @keyframes modalPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <div class="container">
+    <!-- Top Navigation Bar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; flex-wrap: wrap; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 28px;">🍑</span>
+        <div>
+          <h1 style="font-size: 19px; font-weight: 800; color: #ffffff; letter-spacing: -0.01em;">
+            github.com/happy/apology-to-taniya
+          </h1>
+          <p style="font-size: 12px; color: #f472b6;">
+            A sincere peace offering from Happy to the irreplaceable Taniya
+          </p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span class="badge" style="background: rgba(251, 146, 60, 0.18); color: #fed7aa; border: 1px solid rgba(251, 146, 60, 0.35);">
+          🌸 Author: Happy
+        </span>
+        <span class="badge" style="background: rgba(244, 63, 94, 0.18); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.35);">
+          ⭐ VIP: Taniya
+        </span>
+      </div>
+    </div>
+
+    <!-- Pull Request Header Card -->
+    <div class="glass-card" style="padding: 26px; margin-bottom: 24px;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span id="prStatusBadge" class="badge badge-open">● Open Pull Request #404</span>
+            <span style="color: #f472b6; font-size: 13px;">Opened with sincere care by Happy</span>
+          </div>
+          <h2 style="font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">
+            fix(friendship): acknowledge mistake &amp; apologize to Taniya 🍑🌸
+          </h2>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; font-size: 13px; color: #fbcfe8;">
+            <span>Happy wants to merge 1 commit into</span>
+            <span class="branch-pill">main (Taniya/heart)</span>
+            <span>from</span>
+            <span class="branch-pill">patch/happy-deeply-apologizes</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button id="topMergeBtn" onclick="openAcceptModal()" class="btn btn-peach">
+            <span>✨</span> Approve &amp; Merge PR
+          </button>
+        </div>
+      </div>
+
+      <!-- Git Reviewers & Checks Pipeline -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; padding: 16px; background: rgba(18, 7, 15, 0.7); border-radius: 14px; border: 1px solid rgba(244, 114, 182, 0.15); font-size: 13px;">
+        <div>
+          <span style="color: #f472b6; display: block; font-size: 11px; text-transform: uppercase; font-weight: 700;">Sole Reviewer</span>
+          <strong style="color: #fed7aa;">@taniya (Senior Happiness Officer)</strong>
+        </div>
+        <div>
+          <span style="color: #f472b6; display: block; font-size: 11px; text-transform: uppercase; font-weight: 700;">PR Author</span>
+          <strong style="color: #fda4af;">@happy (Ready to Make Amends)</strong>
+        </div>
+        <div>
+          <span style="color: #f472b6; display: block; font-size: 11px; text-transform: uppercase; font-weight: 700;">Sincerity Level</span>
+          <span style="color: #34d399;">✔ 100% Sincere &amp; Verified</span>
+        </div>
+        <div>
+          <span style="color: #f472b6; display: block; font-size: 11px; text-transform: uppercase; font-weight: 700;">Friendship Priority</span>
+          <span style="color: #fbbf24;">⭐ Infinite / Non-negotiable</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sincere Letter Card (README.md) -->
+    <div class="glass-card" style="padding: 30px; margin-bottom: 24px; position: relative; overflow: hidden;">
+      <div style="position: absolute; right: -25px; top: -25px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(251, 146, 60, 0.2) 0%, transparent 70%); pointer-events: none;"></div>
+      
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+        <span style="padding: 6px 12px; background: rgba(251, 146, 60, 0.18); border-radius: 10px; color: #fed7aa; font-size: 13px; font-weight: 700; border: 1px solid rgba(251, 146, 60, 0.3);">
+          README.md — A Personal Note for Taniya
+        </span>
+      </div>
+
+      <div style="font-size: 16px; color: #fce7f3; line-height: 1.85;">
+        <p style="margin-bottom: 14px;">
+          Hey <strong style="color: #ffffff; font-size: 18px;">Taniya</strong>,
+        </p>
+        <p style="margin-bottom: 14px;">
+          I’m writing this apology commit because words spoken clumsily in the heat of the moment can cause painful bugs, and I messed up. I am genuinely, deeply sorry for hurting you or causing any frustration.
+        </p>
+        <p style="margin-bottom: 14px;">
+          As an incredible developer and human being, you know that bugs happen — but hurting a friend as special, brilliant, and wonderful as you is something I never want to repeat. Ever since things felt off, it’s felt like a memory leak in my week: nothing feels quite right when things are strained between us.
+        </p>
+        <p style="margin-bottom: 18px;">
+          I value our bond and your happiness immensely. I promise to listen with an open heart, communicate better, and always have your back.
+        </p>
+        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(244, 114, 182, 0.2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <p style="color: #fda4af; font-weight: 700; font-size: 16px;">
+            With endless warmth &amp; respect,<br/>
+            <span style="color: #fed7aa; font-size: 18px; font-family: 'Playfair Display', serif; font-style: italic;">— Happy 🍑</span>
+          </p>
+          <span style="font-size: 13px; color: #f472b6; font-family: 'Fira Code', monospace;">Signed with 100% genuine sincerity</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Diff Viewer -->
+    <div class="glass-card" style="margin-bottom: 24px; overflow: hidden;">
+      <div style="padding: 14px 18px; background: rgba(22, 9, 18, 0.85); border-bottom: 1px solid rgba(244, 114, 182, 0.18); display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 8px; font-family: 'Fira Code', monospace; font-size: 13px; color: #fed7aa;">
+          <span>📄</span>
+          <span>src/friendship/harmony.ts</span>
+        </div>
+        <span style="font-family: 'Fira Code', monospace; font-size: 12px; color: #fb923c; font-weight: 700;">+14 -4 lines</span>
+      </div>
+      <div style="padding: 10px 0; background: #0c040a;">
+        <div class="diff-line diff-ctx">@@ -1,8 +1,14 @@ // Patching Happy &amp; Taniya's connection</div>
+        <div class="diff-line diff-del">- const stubbornness = true;</div>
+        <div class="diff-line diff-del">- const awkwardSilence = true;</div>
+        <div class="diff-line diff-del">- const takeTaniyaForGranted = true; // Critical logic defect</div>
+        <div class="diff-line diff-del">- const ignoreMistake = true;</div>
+        <div class="diff-line diff-add">+ const sincereApology = {</div>
+        <div class="diff-line diff-add">+   author: "Happy",</div>
+        <div class="diff-line diff-add">+   recipient: "Taniya",</div>
+        <div class="diff-line diff-add">+   status: "Deeply Sorry &amp; Fully Accountable",</div>
+        <div class="diff-line diff-add">+   acknowledgment: "Happy was in the wrong and promises to be better.",</div>
+        <div class="diff-line diff-add">+   treatsGuaranteed: ["Gourmet Coffee", "Comfort Food", "Attentive Listening"],</div>
+        <div class="diff-line diff-add">+   friendshipStrength: Number.POSITIVE_INFINITY,</div>
+        <div class="diff-line diff-add">+ };</div>
+        <div class="diff-line diff-add">+</div>
+        <div class="diff-line diff-add">+ function restoreHarmony() {</div>
+        <div class="diff-line diff-add">+   return friendship.mergeWithLove(sincereApology);</div>
+        <div class="diff-line diff-add">+ }</div>
+      </div>
+    </div>
+
+    <!-- Interactive Debug Shell -->
+    <div class="terminal-window" style="margin-bottom: 24px;">
+      <div class="terminal-header">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span style="margin-left: 10px; font-size: 12px; color: #fed7aa; font-family: 'Fira Code', monospace;">
+          taniya-debug-shell -- bash (Session by Happy)
+        </span>
+      </div>
+      <div id="terminalBody" class="terminal-body">
+        <div style="color: #fb923c;">$ friendship-cli --version</div>
+        <div style="color: #fed7aa;">v4.0.4-peach-pink-apology-edition (By Happy for Taniya)</div>
+        <div style="color: #f472b6; margin-top: 6px;">Click a command shortcut below or test your debugging magic:</div>
+      </div>
+      <div style="padding: 12px 18px; background: #1a0b17; border-top: 1px solid rgba(244, 114, 182, 0.18); display: flex; flex-wrap: wrap; gap: 8px;">
+        <button class="btn btn-outline" style="font-size: 12px; padding: 7px 14px;" onclick="runCommand('npm run apologize')">
+          npm run apologize
+        </button>
+        <button class="btn btn-outline" style="font-size: 12px; padding: 7px 14px;" onclick="runCommand('git log --friendship')">
+          git log --friendship
+        </button>
+        <button class="btn btn-outline" style="font-size: 12px; padding: 7px 14px;" onclick="runCommand('cat peace_treaty.json')">
+          cat peace_treaty.json
+        </button>
+        <button class="btn btn-outline" style="font-size: 12px; padding: 7px 14px;" onclick="runCommand('sudo forgive-happy')">
+          sudo forgive-happy
+        </button>
+      </div>
+    </div>
+
+    <!-- Peace Treaty Vouchers -->
+    <div style="margin-bottom: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h3 style="font-size: 19px; font-weight: 800; color: #ffffff;">🎁 Official Peace Treaty Vouchers for Taniya</h3>
+          <p style="font-size: 13px; color: #f472b6;">Click any voucher to redeem! Funded &amp; honored anytime by Happy.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        <div class="voucher-card" onclick="toggleVoucher(this, 'Coffee / Boba')">
+          <div style="font-size: 28px; margin-bottom: 8px;">☕</div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Unlimited Coffee / Boba</h4>
+          <p style="font-size: 12px; color: #fce7f3;">Redeemable whenever Taniya needs caffeine or treats. Paid by Happy.</p>
+          <div style="margin-top: 12px; font-size: 11px; font-family: 'Fira Code', monospace; color: #fb923c;">CODE: COFFEE-FOR-TANIYA-BY-HAPPY</div>
+        </div>
+
+        <div class="voucher-card" onclick="toggleVoucher(this, 'Praise Review')">
+          <div style="font-size: 28px; margin-bottom: 8px;">⭐</div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Praise-Only Code Review</h4>
+          <p style="font-size: 12px; color: #fce7f3;">100% instant approvals, zero nitpicks, only celebratory emojis from Happy!</p>
+          <div style="margin-top: 12px; font-size: 11px; font-family: 'Fira Code', monospace; color: #fb923c;">CODE: LGTM-QUEEN-TANIYA</div>
+        </div>
+
+        <div class="voucher-card" onclick="toggleVoucher(this, 'Feast on Happy')">
+          <div style="font-size: 28px; margin-bottom: 8px;">🍕</div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Feast on Happy's Tab</h4>
+          <p style="font-size: 12px; color: #fce7f3;">You choose the venue, appetizers &amp; desserts. Bill is fully covered by Happy.</p>
+          <div style="margin-top: 12px; font-size: 11px; font-family: 'Fira Code', monospace; color: #fb923c;">CODE: TREAT-TANIYA-ROYALTY</div>
+        </div>
+
+        <div class="voucher-card" onclick="toggleVoucher(this, 'Listening Session')">
+          <div style="font-size: 28px; margin-bottom: 8px;">🌸</div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">24/7 Venting &amp; Listening</h4>
+          <p style="font-size: 12px; color: #fce7f3;">Zero judgment, zero unsolicited advice. Just pure patient listening from Happy.</p>
+          <div style="margin-top: 12px; font-size: 11px; font-family: 'Fira Code', monospace; color: #fb923c;">CODE: UNCONDITIONAL-LISTENER</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Review & Merge Decision Area -->
+    <div class="glass-card" style="padding: 34px 24px; text-align: center; position: relative;">
+      <h3 style="font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">
+        Will you accept this pull request, Taniya?
+      </h3>
+      <p style="color: #fbcfe8; font-size: 14px; max-width: 560px; margin: 0 auto 24px; line-height: 1.7;">
+        Happy has resolved all issues, run all tests, and deprecated all ego. Your review decision will immediately restore our friendship back into high-availability production! 🍑🌸
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; min-height: 60px;">
+        <button id="mainMergeBtn" onclick="openAcceptModal()" class="btn btn-peach" style="font-size: 16px; padding: 14px 32px;">
+          <span>💖</span> Approve Changes &amp; Merge (I Forgive You!)
+        </button>
+
+        <button id="rejectBtn" onmouseenter="dodgeReject()" onclick="dodgeReject()" class="btn btn-outline" style="font-size: 14px; padding: 12px 22px; transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);">
+          <span>🚫</span> Request Changes (Reject)
+        </button>
+      </div>
+      <div id="rejectToast" style="margin-top: 16px; font-size: 13px; color: #fed7aa; min-height: 22px; font-family: 'Fira Code', monospace;"></div>
+    </div>
+  </div>
+
+  <!-- Acceptance Modal -->
+  <div id="acceptModal" class="modal-overlay">
+    <div class="cert-box">
+      <div style="font-size: 52px; margin-bottom: 14px;">🎉 🍑 💖</div>
+      <span class="badge badge-merged" style="font-size: 13px; margin-bottom: 16px;">
+        ● Pull Request #404 Successfully Merged
+      </span>
+      <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">
+        Friendship Deployed to Production! 🚀
+      </h2>
+      <p style="color: #fce7f3; font-size: 15px; margin-bottom: 24px; line-height: 1.7;">
+        Thank you so much, <strong style="color: #fda4af;">Taniya</strong>! You officially patched the biggest bug of the year. <strong style="color: #fed7aa;">Happy</strong> promises to treasure your friendship forever with zero conflicts and infinite coffee/boba!
+      </p>
+
+      <div style="background: rgba(15, 6, 13, 0.85); border: 1px solid rgba(244, 114, 182, 0.25); border-radius: 14px; padding: 18px; margin-bottom: 24px; font-family: 'Fira Code', monospace; font-size: 12px; color: #fed7aa; text-align: left;">
+        <span style="color: #34d399; font-weight: bold;">✔ STATUS: HARMONY RESTORED</span><br/>
+        <span style="color: #f472b6;">Recipients:</span> Taniya &amp; Happy<br/>
+        <span style="color: #f472b6;">Commit SHA:</span> 77a0-happy-taniya-bff<br/>
+        <span style="color: #f472b6;">Action:</span> Merged PR #404 into main with zero conflicts.
+      </div>
+
+      <button onclick="closeAcceptModal()" class="btn btn-peach" style="width: 100%; padding: 14px;">
+        Yay! Let's Celebrate &amp; Grab Coffee ☕🍑
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Confetti Engine (Peach & Pink Theme)
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles = [];
+    let animationId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function shootConfetti() {
+      const colors = ['#fda4af', '#f472b6', '#fdba74', '#fb923c', '#ffffff', '#f43f5e'];
+      confettiParticles = [];
+      for (let i = 0; i < 180; i++) {
+        confettiParticles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 20 + 10,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          tilt: Math.floor(Math.random() * 10) - 10,
+          tiltAngleIncremental: (Math.random() * 0.07) + .05,
+          tiltAngle: 0,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.5) * 18 - 3,
+          gravity: 0.18
+        });
+      }
+      if (!animationId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let stillActive = false;
+      confettiParticles.forEach((p) => {
+        p.tiltAngle += p.tiltAngleIncremental;
+        p.y += p.gravity * 2 + p.vy;
+        p.x += p.vx;
+        p.vy *= 0.98;
+        p.tilt = Math.sin(p.tiltAngle) * 15;
+
+        if (p.y < canvas.height) stillActive = true;
+
+        ctx.beginPath();
+        ctx.lineWidth = p.r / 2;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
+        ctx.stroke();
+      });
+
+      if (stillActive) {
+        animationId = requestAnimationFrame(animateConfetti);
+      } else {
+        animationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    // Modal Handling
+    function openAcceptModal() {
+      shootConfetti();
+      document.getElementById('acceptModal').classList.add('active');
+      const badge = document.getElementById('prStatusBadge');
+      badge.className = 'badge badge-merged';
+      badge.innerHTML = '● Merged Pull Request #404';
+      
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1046.50, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.36);
+      } catch (e) {}
+    }
+
+    function closeAcceptModal() {
+      document.getElementById('acceptModal').classList.remove('active');
+    }
+
+    // Playful Reject Button Dodge
+    const rejectPhrases = [
+      "Error 418: Friendship too sweet to reject! ☕🍑",
+      "Warning: Rejecting this PR triggers an unhandled emotional exception in Happy! 💔",
+      "403 Forbidden: @taniya has too much kindness to stay upset with Happy! ✨",
+      "Merge conflict avoided: Friendship cannot terminate without mutual forgiveness. 🔀",
+      "Happy promises unlimited boba, coffee & support if you click the shiny merge button! 🌸",
+      "Nice try! This reject button has infinite defensive dodge logic enabled. 🛡️"
+    ];
+    let dodgeCount = 0;
+
+    function dodgeReject() {
+      const btn = document.getElementById('rejectBtn');
+      const toast = document.getElementById('rejectToast');
+      const phrase = rejectPhrases[dodgeCount % rejectPhrases.length];
+      dodgeCount++;
+      
+      const x = (Math.random() - 0.5) * 140;
+      const y = (Math.random() - 0.5) * 60;
+      btn.style.transform = "translate(" + x + "px, " + y + "px)";
+      toast.innerText = phrase;
+    }
+
+    // Voucher Redemption
+    function toggleVoucher(el, name) {
+      el.classList.toggle('redeemed');
+      if (el.classList.contains('redeemed')) {
+        shootConfetti();
+        const code = el.querySelector('div:last-child');
+        if (code) {
+          code.innerText = "STATUS: REDEEMED (Ready to cash in with Happy!)";
+          code.style.color = "#fed7aa";
+        }
+      }
+    }
+
+    // Terminal Commands
+    function runCommand(cmd) {
+      const term = document.getElementById('terminalBody');
+      const userLine = document.createElement('div');
+      userLine.style.color = '#fb923c';
+      userLine.style.marginTop = '10px';
+      userLine.innerText = '$ ' + cmd;
+      term.appendChild(userLine);
+
+      const respLine = document.createElement('div');
+      respLine.style.marginTop = '4px';
+
+      if (cmd === 'npm run apologize') {
+        respLine.style.color = '#fda4af';
+        respLine.innerHTML = '> apology@1.0.0 apologize<br/>> Checking ego of Happy... [DESTROYED: 0%]<br/>> Loading sincerity... [100% VERIFIED]<br/>> Transmitting message: "Happy is so deeply sorry to Taniya. You mean the world!"';
+      } else if (cmd === 'git log --friendship') {
+        respLine.style.color = '#fce7f3';
+        respLine.innerHTML = '<span style="color:#fbbf24;">commit a1b2c3d</span> - fix: Happy was wrong, Taniya deserves the best apology<br/><span style="color:#fbbf24;">commit 99e8d7c</span> - feat: countless memories, laughter &amp; late night chats<br/><span style="color:#fbbf24;">commit 0000001</span> - init: lucky day Taniya and Happy became friends';
+      } else if (cmd === 'cat peace_treaty.json') {
+        respLine.style.color = '#fed7aa';
+        respLine.innerHTML = '{\n  "author": "Happy",\n  "recipient": "Taniya",\n  "coffee": "Unlimited boba/favorite brew",\n  "snacks": "Whatever you crave, fully covered",\n  "stubbornness": 0,\n  "friendship": "Irreplaceable"\n}';
+      } else if (cmd === 'sudo forgive-happy') {
+        respLine.style.color = '#fb7185';
+        respLine.innerHTML = 'Permission denied: Sudo cannot force forgiveness. Only @taniya has root write access to accept this PR!';
+      }
+      term.appendChild(respLine);
+      term.scrollTop = term.scrollHeight;
+    }
+  </script>
+</body>
+</html>
